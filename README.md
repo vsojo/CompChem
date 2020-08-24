@@ -11,6 +11,10 @@ Takes a `.log` file from a GROMACS `mdrun` simulation and makes a comma-separate
 `python3 gmx_log_processor.py -i my_md.log -o my_md.csv`
 ... where `-i` is for input and `-o` for output
 
+### A simpler (and likely better) alternative to this script
+[Justin A. Lemkul](https://www.biochem.vt.edu/people/faculty/JustinLemkul.html) at VirginiaTech suggests that providing the `-xvg none` flag to `gmx energy` is a much easier way of getting this information:
+`gmx energy -f my_em.edr -o potential.xvg -xvg none`
+
 ### History
 This script was developed in August 2020 when the [https://plasma-gate.weizmann.ac.il/Grace/](Xmgrace website) failed for some unknown reason. I developed this script as a replacement, for my own use, to parse the `mdrun` output from GROMACS and give out tables of energy values that can be easily plotted in e.g. Excel. Again: the Grace website was broken, I needed to analyse `mdrun` output, so I wrote this script. Feel free to use it, but please note the warnings at the end!
 
