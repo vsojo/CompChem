@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-GB">
   <info>
-    <title>MiniDOI</title>
-    <id>https://raw.githubusercontent.com/vsojo/CompChem/master/minidoi_01.xml</id>
-    <link href="https://raw.githubusercontent.com/vsojo/CompChem/master/minidoi_01.xml" rel="self"/>
-    <author>
-      <name>Victor Sojo</name>
-      <email>vsojo@amnh.org</email>
-    </author>
+    <title>miniDOI</title>
+    <title-short>miniDOI</title-short>
+    <id>https://csl.mendeley.com/styles/13652363/miniDOI</id>
     <contributor>
       <name>Victor Sojo</name>
       <uri>https://www.mendeley.com/profiles/victor-sojo/</uri>
@@ -15,9 +11,7 @@
     <category citation-format="numeric"/>
     <category field="science"/>
     <category field="generic-base"/>
-    <issn>0028-0836</issn>
-    <eissn>1476-4687</eissn>
-    <updated>2020-10-22T00:51:43+00:00</updated>
+    <updated>2020-10-22T02:24:19+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="title">
@@ -25,12 +19,14 @@
       <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
         <text variable="title" font-style="italic"/>
       </if>
-      <else/>
+      <else>
+        <text variable="title"/>
+      </else>
     </choose>
   </macro>
   <macro name="author">
     <names variable="author">
-      <name form="short" and="symbol" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" initialize-with=". " name-as-sort-order="all"/>
+      <name form="short" and="symbol" delimiter-precedes-last="never" et-al-min="3" initialize-with=". " name-as-sort-order="all"/>
       <label form="short" prefix=", "/>
       <et-al font-style="italic"/>
     </names>
@@ -71,10 +67,10 @@
   <macro name="container-title">
     <choose>
       <if type="article-journal">
-        <text variable="container-title" form="short" strip-periods="true" font-style="italic"/>
+        <text variable="container-title" form="short" strip-periods="true" font-style="italic" suffix=":"/>
       </if>
       <else>
-        <text variable="container-title" form="short" font-style="italic"/>
+        <text variable="container-title" font-style="italic"/>
       </else>
     </choose>
   </macro>
@@ -90,7 +86,9 @@
   </macro>
   <macro name="volume">
     <choose>
-      <if type="article-journal" match="any"/>
+      <if type="article-journal" match="any">
+        <text variable="volume" font-weight="bold" suffix=","/>
+      </if>
       <else>
         <group delimiter=" ">
           <label variable="volume" form="short"/>
@@ -108,22 +106,29 @@
     </layout>
   </citation>
   <bibliography et-al-min="6" et-al-use-first="1" second-field-align="flush" entry-spacing="0" line-spacing="2">
-    <layout suffix=".">
+    <layout>
       <text variable="citation-number" suffix="."/>
       <group delimiter=" ">
-        <text macro="author" suffix="."/>
-        <text macro="title" suffix="."/>
-        <choose>
-          <if type="chapter paper-conference" match="any">
-            <text term="in"/>
-          </if>
-        </choose>
-        <text macro="container-title"/>
-        <text macro="editor"/>
-        <text macro="volume"/>
+        <text macro="author"/>
         <text macro="issuance"/>
-        <text variable="DOI"/>
-        <text macro="access"/>
+        <text macro="container-title"/>
+        <choose>
+          <if match="any" variable="DOI">
+            <text variable="DOI" form="short"/>
+          </if>
+          <else>
+            <text macro="title" suffix="."/>
+            <choose>
+              <if type="chapter paper-conference" match="any">
+                <text term="in"/>
+              </if>
+            </choose>
+            <text macro="editor"/>
+            <text macro="volume"/>
+            <text variable="page"/>
+            <text macro="access"/>
+          </else>
+        </choose>
       </group>
     </layout>
   </bibliography>
