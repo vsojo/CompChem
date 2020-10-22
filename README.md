@@ -1,5 +1,5 @@
-# Computational Chemistry scripts
-This repository is meant to contain (hopefully) helpful script for computational-chemistry work.
+Miscelaneous scripts
+This repository is meant to contain (hopefully) helpful script for assorted work.
 ## Contents
 * [`gmx_log_processor.py`: a script to process to extract energy values from GROMACS `mdrun` output for plotting.](#gmx_log_processor.py)
 
