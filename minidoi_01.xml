@@ -87,7 +87,7 @@
   <macro name="volume">
     <choose>
       <if type="article-journal" match="any">
-        <text variable="volume" font-weight="bold" suffix=","/>
+        <text variable="volume" suffix=","/>
       </if>
       <else>
         <group delimiter=" ">
@@ -105,7 +105,7 @@
       <text variable="citation-number"/>
     </layout>
   </citation>
-  <bibliography et-al-min="6" et-al-use-first="1" second-field-align="flush" entry-spacing="0" line-spacing="2">
+  <bibliography et-al-min="3" et-al-use-first="1" second-field-align="flush" entry-spacing="0" line-spacing="2">
     <layout>
       <text variable="citation-number" suffix="."/>
       <group delimiter=" ">
@@ -114,10 +114,9 @@
         <text macro="container-title"/>
         <choose>
           <if match="any" variable="DOI">
-            <text variable="DOI" form="short"/>
+            <text variable="DOI" form="short" prefix="https://doi.org/"/>
           </if>
           <else>
-            <text macro="title" suffix="."/>
             <choose>
               <if type="chapter paper-conference" match="any">
                 <text term="in"/>
