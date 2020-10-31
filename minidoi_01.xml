@@ -67,7 +67,7 @@
   <macro name="container-title">
     <choose>
       <if type="article-journal">
-        <text variable="container-title" form="short" strip-periods="true" font-style="italic" suffix=""/>
+        <text variable="container-title" form="short" strip-periods="true" font-style="italic"/>
       </if>
       <else>
         <text variable="container-title" font-style="italic"/>
@@ -87,7 +87,7 @@
   <macro name="volume">
     <choose>
       <if type="article-journal" match="any">
-        <text variable="volume" suffix=","/>
+        <text variable="volume"/>
       </if>
       <else>
         <group delimiter=" ">
@@ -123,7 +123,7 @@
               </if>
             </choose>
             <text macro="editor"/>
-            <text macro="volume" suffix=":"/>
+            <text macro="volume"/>
             <text variable="page"/>
             <text macro="access"/>
           </else>
